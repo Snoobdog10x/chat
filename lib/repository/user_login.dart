@@ -1,4 +1,5 @@
 import 'package:chat/abstract/abstract_event.dart';
+import 'package:chat/abstract/abstract_exception.dart';
 import 'package:chat/abstract/appstore.dart';
 
 import '../abstract/abstract_repository.dart';
@@ -20,7 +21,8 @@ abstract mixin class UserLogin {
       var email = inputEvent.email;
       var password = inputEvent.password;
       await appStore.userService.login(email, password);
-    } on Exception catch (e) {
+      responseUserLogin(outputEvent);
+    } on AbstractException catch (e) {
       outputEvent.exception = e;
       responseUserLogin(outputEvent);
     }

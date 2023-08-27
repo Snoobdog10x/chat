@@ -1,4 +1,6 @@
 import 'package:chat/abstract/abstract_bloc.dart';
+import 'package:chat/screen/login/login.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'appstore.dart';
@@ -7,15 +9,28 @@ abstract class AbstractState<T extends StatefulWidget> extends State<T> {
   AbstractBloc get bloc;
   AppStore get appStore => bloc.appStore;
   bool isLoading = false;
+  bool isLogged = false;
+  bool get secure => true;
   double get screenWidth => MediaQuery.sizeOf(context).width;
   double get screenHeight => MediaQuery.sizeOf(context).height;
   void onCreate();
 
   @override
   void initState() {
-    onCreate();
     bloc.state = this;
+    isLogged = appStore.userService.isLogged();
+    onCreate();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      if (secure && !isLogged) {
+        pushToScreen(Login(), isReplace: true);
+      }
+    });
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
   }
 
   void startLoading() {
@@ -68,11 +83,73 @@ abstract class AbstractState<T extends StatefulWidget> extends State<T> {
     );
   }
 
+  void showAlertDialog({
+    String? title,
+    String? content,
+    TextEditingController? controller,
+    String confirmTitle = "OK",
+    String cancelTitle = "NO",
+    Function? confirm,
+    Function? cancel,
+    bool isLockOutsideTap = false,
+  }) {
+    stopLoading();
+    List<CupertinoDialogAction> actions = [];
+    if (cancel != null) {
+      actions.add(
+        CupertinoDialogAction(
+          isDefaultAction: true,
+          onPressed: () {
+            cancel();
+          },
+          child: Text(cancelTitle),
+        ),
+      );
+    }
+
+    if (confirm != null) {
+      actions.add(
+        CupertinoDialogAction(
+          onPressed: () {
+            confirm();
+          },
+          child: Text(confirmTitle),
+        ),
+      );
+    }
+    Widget dialogContent = Text(content ?? "");
+    if (controller != null) {
+      dialogContent = Column(
+        children: [
+          Text(content ?? ""),
+          CupertinoTextField(
+            controller: controller,
+          )
+        ],
+      );
+    }
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: Text(title ?? ""),
+        content: dialogContent,
+        actions: actions,
+      ),
+    ).then((value) {
+      onPop();
+    });
+  }
+
   void notifyDataChanged() {
     bloc.notifyDataChanged();
   }
 
-  void pushToScreen(Widget screen) {
+  void pushToScreen(Widget screen, {bool isReplace = false}) {
+    if (isReplace) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => screen), (route) => false);
+      return;
+    }
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => screen),

@@ -1,4 +1,5 @@
 import 'package:chat/shared_product/service/firestore_service.dart';
+import 'package:chat/shared_product/service/local_storage_service.dart';
 import 'package:chat/shared_product/service/user_service.dart';
 import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 
@@ -7,10 +8,12 @@ class AppStore {
   UserService userService = UserService();
   FireStoreService fireStoreService = FireStoreService();
   FirebaseChatCore chatService = FirebaseChatCore.instance;
-
+  LocalStorageService localStorageService = LocalStorageService();
   Future<void> init() async {
+    await fireStoreService.boot();
+    await localStorageService.boot();
     await userService.boot();
-    fireStoreService.boot();
+    isReady = true;
   }
 
   static AppStore? _instance;

@@ -6,6 +6,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared_product/widget/text_input.dart';
+import '../home_chat/home_chat.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -17,8 +18,16 @@ class Login extends StatefulWidget {
 class LoginState extends AbstractState<Login> {
   @override
   late LoginBloc bloc = LoginBloc();
+  
   @override
-  void onCreate() {}
+  bool get secure => false;
+
+  @override
+  void onCreate() {
+    if (isLogged) {
+      pushToScreen(HomeChat());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

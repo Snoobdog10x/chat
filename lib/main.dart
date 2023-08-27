@@ -1,8 +1,12 @@
-import 'package:chat/abstract/appstore.dart';
+import 'package:chat/screen/default/default.dart';
 import 'package:chat/screen/home_chat/home_chat.dart';
 import 'package:chat/screen/login/login.dart';
+import 'package:chat/screen/signin/signin.dart';
+import 'package:chat/screen/splash/splash.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'abstract/appstore.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -10,10 +14,19 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await AppStore.getAppStore().init();
+
+  if (kDebugMode) {
+    runApp(
+      const MaterialApp(
+        home: Default(),
+      ),
+    );
+    return;
+  }
+
   runApp(
     const MaterialApp(
-      home: Login(),
+      home: Splash(),
     ),
   );
 }
