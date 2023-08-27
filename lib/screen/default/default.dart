@@ -27,7 +27,7 @@ class DefaultState extends AbstractState<Default> {
       margin: EdgeInsets.only(bottom: 16),
       child: TextButton(
         onPressed: () {
-          pushToScreen(screen);
+          pushToScreen(screen, isReplace: true);
         },
         child: Text(screenName),
       ),
@@ -57,5 +57,10 @@ class DefaultState extends AbstractState<Default> {
   @override
   Future<void> onCreate() async {
     await AppStore.getAppStore().init();
+  }
+  
+  @override
+  void onReady() {
+    // TODO: implement onReady
   }
 }

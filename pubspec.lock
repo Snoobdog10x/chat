@@ -73,6 +73,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.1"
+  cross_file:
+    dependency: transitive
+    description:
+      name: cross_file
+      sha256: "0b0036e8cccbfbe0555fd83c1d31a6f30b77a96b598b35a5d36dd41f718695e9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.3+4"
   csslib:
     dependency: transitive
     description:
@@ -129,6 +137,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  file_picker:
+    dependency: "direct dev"
+    description:
+      name: file_picker
+      sha256: c7a8e25ca60e7f331b153b0cb3d405828f18d3e72a6fa1d9440c86556fffc877
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.0"
   firebase_auth:
     dependency: "direct dev"
     description:
@@ -177,6 +193,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.7.0"
+  firebase_storage:
+    dependency: "direct dev"
+    description:
+      name: firebase_storage
+      sha256: "11423ac63c1ec566069c80b1d01bc3c9e12a8f106bbc4ba77fa150afb88488a3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "11.2.6"
+  firebase_storage_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_storage_platform_interface
+      sha256: "2a8ee7b8a06ee5201f9a116db6972ba0020e3a314a5065acdcb616f4d6c99771"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.4.5"
+  firebase_storage_web:
+    dependency: transitive
+    description:
+      name: firebase_storage_web
+      sha256: bd110daa180dc9c89abb490c8a330571e103291b348358d320f5b20a61cd46fc
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.6.6"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -238,6 +278,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.1"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      sha256: "950e77c2bbe1692bc0874fc7fb491b96a4dc340457f4ea1641443d0a6c1ea360"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.15"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -257,13 +305,13 @@ packages:
     source: hosted
     version: "0.15.4"
   http:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: http
-      sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
+      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "0.13.6"
   http_parser:
     dependency: transitive
     description:
@@ -272,6 +320,46 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  image_picker:
+    dependency: "direct dev"
+    description:
+      name: image_picker
+      sha256: "9978d3510af4e6a902e545ce19229b926e6de6a1828d6134d3aab2e129a4d270"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.7+5"
+  image_picker_android:
+    dependency: transitive
+    description:
+      name: image_picker_android
+      sha256: "8179b54039b50eee561676232304f487602e2950ffb3e8995ed9034d6505ca34"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.7+4"
+  image_picker_for_web:
+    dependency: transitive
+    description:
+      name: image_picker_for_web
+      sha256: "869fe8a64771b7afbc99fc433a5f7be2fea4d1cb3d7c11a48b6b579eb9c797f0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
+  image_picker_ios:
+    dependency: transitive
+    description:
+      name: image_picker_ios
+      sha256: bee3b7c7e6266a37fb1bfdc275bc60427029d447205d44933aac130fbb9d3330
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.8+1"
+  image_picker_platform_interface:
+    dependency: transitive
+    description:
+      name: image_picker_platform_interface
+      sha256: c1134543ae2187e85299996d21c526b2f403854994026d575ae4cf30d7bb2a32
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.9.0"
   intl:
     dependency: transitive
     description:
@@ -336,6 +424,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  mime:
+    dependency: "direct dev"
+    description:
+      name: mime
+      sha256: e4ff8e8564c03f255408decd16e7899da1733852a9110a58fe6d1b817684a63e
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
+  open_filex:
+    dependency: "direct dev"
+    description:
+      name: open_filex
+      sha256: "854aefd72dfd74219dc8c8d1767c34ec1eae64b8399a5be317bddb1ec2108915"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.3.2"
   path:
     dependency: transitive
     description:
@@ -344,6 +448,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
+  path_provider:
+    dependency: "direct dev"
+    description:
+      name: path_provider
+      sha256: "3087813781ab814e4157b172f1a11c46be20179fcc9bea043e0fba36bc0acaa2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.15"
+  path_provider_android:
+    dependency: transitive
+    description:
+      name: path_provider_android
+      sha256: "5d44fc3314d969b84816b569070d7ace0f1dea04bd94a83f74c4829615d22ad8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
+  path_provider_foundation:
+    dependency: transitive
+    description:
+      name: path_provider_foundation
+      sha256: "1b744d3d774e5a879bb76d6cd1ecee2ba2c6960c03b1020cd35212f6aa267ac5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
   path_provider_linux:
     dependency: transitive
     description:
@@ -601,10 +729,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: "9e82a402b7f3d518fb9c02d0e9ae45952df31b9bf34d77baf19da2de03fc2aaa"
+      sha256: "5a751eddf9db89b3e5f9d50c20ab8612296e4e8db69009788d6c8b060a84191c"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.7"
+    version: "4.1.4"
   xdg_directories:
     dependency: transitive
     description:

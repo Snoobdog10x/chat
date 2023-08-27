@@ -14,7 +14,7 @@ abstract class AbstractState<T extends StatefulWidget> extends State<T> {
   double get screenWidth => MediaQuery.sizeOf(context).width;
   double get screenHeight => MediaQuery.sizeOf(context).height;
   void onCreate();
-
+  void onReady();
   @override
   void initState() {
     bloc.state = this;
@@ -23,7 +23,10 @@ abstract class AbstractState<T extends StatefulWidget> extends State<T> {
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       if (secure && !isLogged) {
         pushToScreen(Login(), isReplace: true);
+        return;
       }
+
+      onReady();
     });
     super.initState();
   }
@@ -52,6 +55,7 @@ abstract class AbstractState<T extends StatefulWidget> extends State<T> {
     EdgeInsets margin = const EdgeInsets.symmetric(vertical: 5, horizontal: 16),
     String appBarTitle = "",
     bool hasAppBar = true,
+    List<Widget>? actions,
   }) {
     return AnimatedBuilder(
       animation: bloc,
@@ -61,6 +65,7 @@ abstract class AbstractState<T extends StatefulWidget> extends State<T> {
             appBar: hasAppBar
                 ? AppBar(
                     title: Text(appBarTitle),
+                    actions: actions,
                   )
                 : null,
             body: Container(

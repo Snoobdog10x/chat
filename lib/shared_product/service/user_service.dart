@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:chat/abstract/abstract_exception.dart';
 import 'package:chat/abstract/abstract_service.dart';
+import 'package:chat/abstract/appstore.dart';
 import 'package:chat/shared_product/service/local_storage_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
@@ -54,8 +55,7 @@ class UserService extends AbstractService with UserRetrieve {
           types.User(
             firstName: firstName,
             id: credential.user!.uid,
-            imageUrl:
-                'https://firebasestorage.googleapis.com/v0/b/chat-6e0a4.appspot.com/o/avatar%2Fdefault%2Fdefault.jpg?alt=media&token=5938d8c8-94bc-4378-94af-e9d6f56bfe97',
+            imageUrl: getDefaultUserAvatar(),
             lastName: lastName,
           ),
         );
@@ -79,15 +79,26 @@ class UserService extends AbstractService with UserRetrieve {
     return _auth.currentUser != null;
   }
 
-  types.User? currentUser() {
+  types.User currentUser() {
     var userString = appStore.localStorageService.getCache(CacheKey.LOCAL_USER);
-    if (userString.isEmpty) return null;
+    if (userString.isEmpty) return types.User(id: GUEST_ID, firstName: "GUEST");
     return types.User.fromJson(jsonDecode(userString));
   }
 
   @override
   Future<void> boot() async {
     await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
+    String avatar = await appStore.firebaseStorageService.getDownloadUrl(
+        "gs://chat-6e0a4.appspot.com/avatar/default/default.jpg");
+    await appStore.localStorageService
+        .setCache(CacheKey.DEFAULT_USER_AVATAR, avatar);
+  }
+
+  String getDefaultUserAvatar() {
+    var avatar =
+        appStore.localStorageService.getCache(CacheKey.DEFAULT_USER_AVATAR);
+
+    return avatar;
   }
 
   @override

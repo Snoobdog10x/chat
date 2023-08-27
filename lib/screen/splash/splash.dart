@@ -32,4 +32,9 @@ class SplashState extends AbstractState<Splash> {
     }
     pushToScreen(Login());
   }
+  
+  @override
+  void onReady() {
+    // TODO: implement onReady
+  }
 }

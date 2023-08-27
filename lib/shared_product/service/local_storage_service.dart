@@ -1,7 +1,7 @@
 import 'package:chat/abstract/abstract_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum CacheKey { LOCAL_USER }
+enum CacheKey { LOCAL_USER, DEFAULT_USER_AVATAR }
 
 class LocalStorageService extends AbstractService {
   SharedPreferences? _storage;
@@ -28,7 +28,6 @@ class LocalStorageService extends AbstractService {
   @override
   Future<void> boot() async {
     if (_storage != null) return;
-    print("boot");
     _storage = await SharedPreferences.getInstance();
   }
 

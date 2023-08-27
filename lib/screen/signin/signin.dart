@@ -18,11 +18,7 @@ class SignInState extends AbstractState<SignIn> {
   bool get secure => false;
 
   @override
-  void onCreate() {
-    if (isLogged) {
-      pushToScreen(HomeChat());
-    }
-  }
+  void onCreate() {}
 
   @override
   Widget build(BuildContext context) {
@@ -105,5 +101,12 @@ class SignInState extends AbstractState<SignIn> {
         hintText: hintText,
       ),
     );
+  }
+
+  @override
+  void onReady() {
+    if (isLogged) {
+      pushToScreen(HomeChat(), isReplace: true);
+    }
   }
 }

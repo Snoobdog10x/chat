@@ -18,16 +18,12 @@ class Login extends StatefulWidget {
 class LoginState extends AbstractState<Login> {
   @override
   late LoginBloc bloc = LoginBloc();
-  
+
   @override
   bool get secure => false;
 
   @override
-  void onCreate() {
-    if (isLogged) {
-      pushToScreen(HomeChat());
-    }
-  }
+  void onCreate() {}
 
   @override
   Widget build(BuildContext context) {
@@ -118,5 +114,12 @@ class LoginState extends AbstractState<Login> {
         ),
       ),
     );
+  }
+
+  @override
+  void onReady() {
+    if (isLogged) {
+      pushToScreen(HomeChat(), isReplace: true);
+    }
   }
 }
