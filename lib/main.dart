@@ -16,13 +16,13 @@ Future<void> main() async {
   );
 
   if (kDebugMode) {
-    runApp(
-      const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Default(),
-      ),
-    );
-    return;
+  runApp(
+  const MaterialApp(
+  debugShowCheckedModeBanner: false,
+  home: Default(),
+  ),
+  );
+  return;
   }
 
   runApp(

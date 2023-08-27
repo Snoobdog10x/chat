@@ -24,17 +24,15 @@ class SplashState extends AbstractState<Splash> {
   }
 
   @override
-  Future<void> onCreate() async {
+  Future<void> onCreate() async {}
+
+  @override
+  Future<void> onReady() async {
     await AppStore.getAppStore().init();
     if (isLogged) {
-      pushToScreen(HomeChat());
+      pushToScreen(HomeChat(), isReplace: true);
       return;
     }
-    pushToScreen(Login());
-  }
-  
-  @override
-  void onReady() {
-    // TODO: implement onReady
+    pushToScreen(Login(), isReplace: true);
   }
 }
