@@ -70,7 +70,7 @@ class HomeChatState extends AbstractState<HomeChat> {
       leading: CircleAvatar(
         backgroundImage: NetworkImage(otherUser.imageUrl!),
       ),
-      title: Text(otherUser.lastName! + otherUser.firstName!),
+      title: Text("${otherUser.lastName!} ${otherUser.firstName!}"),
     );
   }
 
