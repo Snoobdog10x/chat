@@ -49,6 +49,20 @@ class SignInState extends AbstractState<SignIn> {
           ),
           SizedBox(height: 16),
           TextInput(
+            hintText: "First name",
+            onTextChange: (value) {
+              bloc.firstName = value;
+            },
+          ),
+          SizedBox(height: 16),
+          TextInput(
+            hintText: "Last name",
+            onTextChange: (value) {
+              bloc.lastName = value;
+            },
+          ),
+          SizedBox(height: 16),
+          TextInput(
             hintText: "Email",
             onTextChange: (value) {
               bloc.email = value;

@@ -6,6 +6,8 @@ import 'package:chat/screen/signin/signin.dart';
 class SignInBloc extends AbstractBloc<SignInState> with UserSignup {
   String email = "";
   String password = "";
+  String firstName = "Nguyen";
+  String lastName = "Thanh";
   void signup() {
     state.startLoading();
     if (email.isEmpty || password.isEmpty) {
@@ -19,7 +21,7 @@ class SignInBloc extends AbstractBloc<SignInState> with UserSignup {
       return;
     }
 
-    var inputEvent = UserSignupInputEvent(email, password, "Nguyen", "Thanh");
+    var inputEvent = UserSignupInputEvent(email, password, firstName, lastName);
     requestUserSignup(inputEvent);
   }
 
