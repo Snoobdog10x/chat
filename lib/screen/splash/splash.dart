@@ -28,7 +28,9 @@ class SplashState extends AbstractState<Splash> {
 
   @override
   Future<void> onReady() async {
+    startLoading();
     await AppStore.getAppStore().init();
+    startLoading();
     if (isLogged) {
       pushToScreen(HomeChat(), isReplace: true);
       return;

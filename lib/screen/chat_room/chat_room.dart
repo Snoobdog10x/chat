@@ -41,9 +41,12 @@ class ChatRoomState extends AbstractState<ChatRoom> {
 
   @override
   Widget build(BuildContext context) {
+    types.User user =
+        widget.room.users.firstWhere((element) => element.id != bloc.user.id);
     return buildScreen(
-      hasAppBar: false,
       body: buildBody(),
+      margin: EdgeInsets.zero,
+      appBarTitle: "${user.firstName} ${user.lastName}",
     );
   }
 
@@ -159,7 +162,9 @@ class ChatRoomState extends AbstractState<ChatRoom> {
       final name = result.name;
 
       try {
-        final reference = appStore.firebaseStorageService.storage.ref(name);
+        final reference = appStore.firebaseStorageService.storage.ref(
+          "/room/${widget.room.id}/image/${name}_${DateTime.now().toIso8601String()}",
+        );
         await reference.putData(data);
         final uri = await reference.getDownloadURL();
 

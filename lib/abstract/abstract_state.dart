@@ -72,6 +72,7 @@ abstract class AbstractState<T extends StatefulWidget> extends State<T> {
               margin: margin,
               child: body,
             ),
+            resizeToAvoidBottomInset: true,
           ),
           if (isLoading)
             Positioned.fill(

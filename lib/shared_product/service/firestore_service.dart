@@ -6,8 +6,8 @@ class FireStoreService extends AbstractService {
   
   @override
   Future<void> boot() async {
-    await db
-        .enablePersistence(const PersistenceSettings(synchronizeTabs: true));
+    // await db
+    //     .enablePersistence(const PersistenceSettings(synchronizeTabs: true));
   }
 
   @override
