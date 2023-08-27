@@ -42,7 +42,7 @@ packages:
     source: hosted
     version: "1.1.1"
   cloud_firestore:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: cloud_firestore
       sha256: "21cffe06a212015950010ecb9adbf1eb9acaf294f2bd159bde7980aee37c997b"
@@ -114,7 +114,7 @@ packages:
     source: hosted
     version: "1.3.1"
   firebase_auth:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: firebase_auth
       sha256: "02d9cdf1305f0c22cde492802598a13a1975ec8aa05bf608be799f939352cbe8"
@@ -138,7 +138,7 @@ packages:
     source: hosted
     version: "5.7.0"
   firebase_core:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: firebase_core
       sha256: c78132175edda4bc532a71e01a32964e4b4fcf53de7853a422d96dac3725f389
