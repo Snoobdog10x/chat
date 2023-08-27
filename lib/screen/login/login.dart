@@ -82,7 +82,10 @@ class LoginState extends AbstractState<Login> {
     return RichText(
       text: TextSpan(
         children: [
-          TextSpan(text: "Don't have account? "),
+          TextSpan(
+            text: "Don't have account? ",
+            style: TextStyle(color: Colors.black),
+          ),
           TextSpan(
             text: "Create",
             style: TextStyle(color: Colors.blue),
