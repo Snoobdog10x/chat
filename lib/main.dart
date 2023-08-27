@@ -15,15 +15,15 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  if (kDebugMode) {
-  runApp(
-  const MaterialApp(
-  debugShowCheckedModeBanner: false,
-  home: Default(),
-  ),
-  );
-  return;
-  }
+  // if (kDebugMode) {
+  //   runApp(
+  //     const MaterialApp(
+  //       debugShowCheckedModeBanner: false,
+  //       home: Default(),
+  //     ),
+  //   );
+  //   return;
+  // }
 
   runApp(
     const MaterialApp(
